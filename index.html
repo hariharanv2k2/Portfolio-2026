@@ -1332,7 +1332,7 @@ nav { z-index: 4000; }
 
 
 
-/* ── Final PDF Resume Embed Fix ───────────────── */
+/* ── Resume Preview Fix: No iframe, no blocked PDF ───────────────── */
 .resume-subtitle {
   margin-bottom: 0;
 }
@@ -1344,27 +1344,60 @@ nav { z-index: 4000; }
   overflow: hidden;
   box-shadow: 0 24px 70px rgba(0,0,0,0.32);
 }
-.resume-pdf-preview {
+.resume-image-preview {
   background: #0b1020;
   padding: 14px;
 }
-.resume-pdf-preview iframe {
+.resume-image-preview a {
+  display: block;
+  cursor: pointer;
+}
+.resume-image-preview img {
   width: 100%;
-  height: min(76vh, 900px);
-  min-height: 620px;
-  border: 0;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
   border-radius: 10px;
   background: #ffffff;
-  display: block;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
 }
-.resume-mobile-note {
-  display: none;
-  padding: 14px 16px;
+.resume-preview-note {
+  padding: 12px 16px;
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 13px;
   line-height: 1.65;
   background: rgba(255,255,255,0.025);
+}
+@media(max-width:900px){
+  .resume-pdf-card {
+    margin-top: 24px;
+    border-radius: 14px;
+  }
+  .resume-image-preview {
+    padding: 10px;
+  }
+  .resume-preview-note {
+    font-size: 12.5px;
+    padding: 11px 13px;
+  }
+}
+@media(max-width:600px){
+  .resume-pdf-card {
+    margin-top: 20px;
+  }
+  .resume-image-preview {
+    padding: 8px;
+  }
+  .resume-image-preview img {
+    border-radius: 8px;
+  }
+  .rp-filename {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 /* ── Final Experience Mobile Alignment Fix ───── */
@@ -1426,6 +1459,51 @@ nav { z-index: 4000; }
 /* Final visibility fallback: prevents blank sections on mobile browsers */
 .fade-up { opacity: 1 !important; transform: none !important; }
 
+
+
+/* ── Mobile Menu Close Button Final Fix ───────── */
+.mobile-nav-close {
+  display: none;
+}
+@media(max-width:900px){
+  #mobileNav.mobile-nav-overlay {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #mobileNav.mobile-nav-overlay.open {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .mobile-nav-close {
+    display: flex;
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 100002;
+  }
+  .mobile-nav-close:hover,
+  .mobile-nav-close:focus {
+    border-color: var(--mint);
+    color: var(--mint);
+    outline: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1446,20 +1524,21 @@ nav { z-index: 4000; }
     <a href="#resume">Resume</a>
     <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
-  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" onclick="this.classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');document.body.classList.toggle('menu-open');return false;">
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile Nav Overlay -->
-<div class="mobile-nav-overlay" id="mobileNav">
-  <a href="#about" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">About</a>
-  <a href="#journey" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Journey</a>
-  <a href="#skills" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Skills</a>
-  <a href="#experience" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Experience</a>
-  <a href="#projects" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Projects</a>
-  <a href="#resume" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Resume</a>
-  <a href="#contact" class="mob-link" style="color:var(--mint)" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Hire Me</a>
+<div class="mobile-nav-overlay" id="mobileNav" aria-hidden="true">
+  <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Close menu">×</button>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#journey" class="mob-link">Journey</a>
+  <a href="#skills" class="mob-link">Skills</a>
+  <a href="#experience" class="mob-link">Experience</a>
+  <a href="#projects" class="mob-link">Projects</a>
+  <a href="#resume" class="mob-link">Resume</a>
+  <a href="#contact" class="mob-link" style="color:var(--mint)">Hire Me</a>
 </div>
 
 <!-- ── HERO ──────────────────────────────── -->
@@ -1819,16 +1898,18 @@ nav { z-index: 4000; }
         <span class="rp-filename">Hariharan_V_Resume_Aligned.pdf</span>
       </div>
 
-      <div class="resume-pdf-preview">
-        <iframe
-          src="./Hariharan_V_Resume_Aligned.pdf#toolbar=1&navpanes=0&scrollbar=1"
-          title="Hariharan V Resume PDF Preview"
-          loading="lazy">
-        </iframe>
+      <div class="resume-image-preview">
+        <a href="./Hariharan_V_Resume_Aligned.pdf" target="_blank" rel="noopener" aria-label="Open Hariharan V Resume PDF">
+          <img
+            src="./Hariharan_V_Resume_Aligned_Page_1.png"
+            alt="Hariharan V Resume Preview"
+            loading="lazy"
+          />
+        </a>
       </div>
 
-      <div class="resume-mobile-note">
-        PDF preview may not render inside some mobile browsers. Use View Resume or Download Resume below for the best experience.
+      <div class="resume-preview-note">
+        Resume preview is shown as an image to avoid browser PDF blocking. Use View Resume or Download Resume for the original PDF.
       </div>
     </div>
 
@@ -1840,7 +1921,7 @@ nav { z-index: 4000; }
         </svg>
         View Resume
       </a>
-      <a href="./Hariharan_V_Resume_Aligned.pdf" download="./Hariharan_V_Resume_Aligned.pdf" class="btn-download">
+      <a href="./Hariharan_V_Resume_Aligned.pdf" download="Hariharan_V_Resume_Aligned.pdf" class="btn-download">
         <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -2022,41 +2103,61 @@ document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 
 
 <script>
-// Final stable mobile menu and visibility fallback
+// Final stable mobile menu: hamburger opens, X button closes, links close, ESC closes
 (function(){
-  function initPortfolioFinalFixes(){
+  function initMobileMenu(){
     var btn = document.getElementById('hamburger');
     var menu = document.getElementById('mobileNav');
-    if (btn && menu && !btn.dataset.boundFinalToggle) {
-      btn.dataset.boundFinalToggle = 'true';
-      function setMenu(open){
-        btn.classList.toggle('open', open);
-        menu.classList.toggle('open', open);
-        document.body.classList.toggle('menu-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      }
-      btn.addEventListener('click', function(e){
+    var closeBtn = document.getElementById('mobileNavClose');
+    if (!btn || !menu) return;
+
+    // Remove any old inline handlers safely if the file was pasted with older code.
+    btn.onclick = null;
+    menu.querySelectorAll('.mob-link').forEach(function(link){ link.onclick = null; });
+    if (closeBtn) closeBtn.onclick = null;
+
+    function setMenu(open){
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      setMenu(!menu.classList.contains('open'));
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e){
         e.preventDefault();
         e.stopPropagation();
-        setMenu(!menu.classList.contains('open'));
-      });
-      menu.querySelectorAll('a').forEach(function(link){
-        link.addEventListener('click', function(){ setMenu(false); });
-      });
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') setMenu(false);
-      });
-      window.addEventListener('resize', function(){
-        if (window.innerWidth > 900) setMenu(false);
+        setMenu(false);
       });
     }
+
+    menu.querySelectorAll('.mob-link').forEach(function(link){
+      link.addEventListener('click', function(){ setMenu(false); });
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 900) setMenu(false);
+    });
+
     document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
   }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPortfolioFinalFixes);
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
   } else {
-    initPortfolioFinalFixes();
+    initMobileMenu();
   }
 })();
 </script>
