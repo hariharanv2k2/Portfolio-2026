@@ -1100,6 +1100,113 @@ footer {
   .rv-name { font-size: 22px; }
   .btn-download, .btn-view { cursor: pointer; }
 }
+
+
+/* ── Final Responsive Fixes: Mobile spacing, Experience compact, Menu close ── */
+html, body { width:100%; max-width:100%; overflow-x:hidden; }
+body.menu-open { overflow:hidden; }
+section { overflow:visible; }
+nav { z-index:3000; }
+.hamburger { position:relative; z-index:3100; cursor:pointer; }
+.mobile-nav-overlay { z-index:2500; }
+.projects-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
+#experience { padding:90px 0 84px; }
+.exp-card { margin-top:34px; padding:34px 38px; }
+.exp-header { margin-bottom:20px; gap:14px; }
+.exp-bullets { gap:8px; }
+.exp-bullets li { line-height:1.62; }
+
+@media(max-width:900px){
+  nav { padding:12px 18px; min-height:56px; background:rgba(6,9,15,0.94); border-bottom:1px solid var(--border); }
+  .mobile-nav-overlay { padding-top:72px; gap:26px; justify-content:flex-start; }
+  .mobile-nav-overlay a { font-size:30px; }
+  #hero { min-height:auto; padding:78px 0 54px; align-items:flex-start; }
+  .hero-inner { padding-top:0 !important; gap:0; }
+  .status-badge { margin-bottom:18px; }
+  .hero-title-wrap { margin-bottom:18px; flex-wrap:wrap; gap:8px; }
+  .hero-tagline { margin-bottom:28px; }
+  .scroll-hint { display:none; }
+  .container { width:100%; max-width:100%; padding:0 20px; }
+  section { padding-left:0; padding-right:0; }
+  #about, #journey, #skills, #experience, #projects, #education, #certs, #resume, #contact { padding-top:64px; padding-bottom:64px; }
+  .section-tag { margin-bottom:10px; font-size:10px; letter-spacing:1.5px; }
+  .section-title { margin-bottom:12px; line-height:1.18; }
+  .about-grid { gap:30px; }
+  .stats-row { gap:12px; margin-top:24px; }
+  .stat-chip { flex:1 1 120px; min-width:0; padding:14px 16px; }
+  .journey-grid, .skills-categories, .projects-grid { margin-top:32px; gap:16px; }
+  .phase-card, .skill-group, .project-card { padding:24px 20px; }
+  #experience { padding-top:64px; padding-bottom:54px; }
+  .exp-card { margin-top:28px; padding:22px 18px; border-radius:14px; overflow:visible; }
+  .exp-header { margin-bottom:16px; gap:10px; }
+  .exp-company { font-size:20px; line-height:1.25; }
+  .exp-role { font-size:11px; }
+  .exp-duration { align-items:flex-start; width:100%; }
+  .duration-badge { font-size:10px; padding:4px 11px; }
+  .location-tag { text-align:left; }
+  .exp-bullets { gap:7px; }
+  .exp-bullets li { gap:9px; font-size:13.4px; line-height:1.55; }
+  .exp-bullets li::before { margin-top:0; }
+  .projects-grid { grid-template-columns:1fr; }
+  #wa-widget { bottom:14px; right:14px; }
+  #wa-btn { width:50px; height:50px; }
+  #wa-btn svg { width:26px; height:26px; }
+}
+
+@media(max-width:480px){
+  nav { padding:10px 16px; min-height:52px; }
+  .container { padding:0 16px; }
+  #hero { padding-top:66px; padding-bottom:44px; }
+  .hero-name { font-size:clamp(44px, 15vw, 62px); line-height:0.98; }
+  .title-prefix { font-size:11px; }
+  .title-typed { font-size:17px; }
+  .hero-tagline, .about-bio, .phase-desc, .client-desc, .project-desc, .section-sub { font-size:13.5px; line-height:1.72; }
+  .hero-btns { gap:10px; }
+  .btn-primary, .btn-outline { width:100%; justify-content:center; padding:12px 18px; }
+  .section-title { font-size:26px; }
+  #about, #journey, #skills, #experience, #projects, #education, #certs, #resume, #contact { padding-top:52px; padding-bottom:52px; }
+  .about-photo-frame { width:min(72vw, 245px); }
+  .stat-chip { flex-basis:100%; }
+  .phase-card, .skill-group, .project-card { padding:20px 16px; }
+  .skill-pill { font-size:11.5px; padding:5px 10px; }
+  #experience { padding-top:52px; padding-bottom:46px; }
+  .exp-card { margin-top:20px; padding:18px 15px; }
+  .exp-header { margin-bottom:12px; }
+  .exp-company { font-size:18px; }
+  .exp-bullets { gap:6px; }
+  .exp-bullets li { font-size:12.8px; line-height:1.48; gap:8px; }
+  .resume-card { margin-top:18px; }
+  .resume-body { padding:16px 13px; }
+  .mobile-nav-overlay { gap:22px; padding-top:78px; }
+  .mobile-nav-overlay a { font-size:28px; }
+}
+
+@media(max-width:380px){
+  .container { padding:0 14px; }
+  .section-title { font-size:24px; }
+  .hero-name { font-size:42px; }
+  .status-badge { font-size:9.5px; padding:4px 10px; }
+  .exp-card { padding:16px 13px; }
+  .exp-bullets li { font-size:12.4px; line-height:1.45; }
+  .contact-email-big { font-size:16px; word-break:break-word; }
+}
+
+
+
+/* Extra mobile width fix after testing */
+@media(max-width:900px){
+  .hero-inner, .hero-left, .about-text, .exp-card, .project-card, .resume-card { min-width:0; max-width:100%; }
+  .hero-inner { width:100%; }
+  .hero-name { word-break:normal; overflow-wrap:normal; }
+}
+@media(max-width:480px){
+  .hero-name { font-size:clamp(38px, 12vw, 50px); letter-spacing:1px; }
+  .exp-bullets li { margin-bottom:0; }
+}
+@media(max-width:380px){
+  .hero-name { font-size:38px; }
+}
+
 </style>
 </head>
 <body>
@@ -1120,7 +1227,7 @@ footer {
     <a href="#resume">Resume</a>
     <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Open or close menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -1414,20 +1521,6 @@ footer {
           <span class="proj-tag">pytest</span>
           <span class="proj-tag">ERPNext</span>
           <span class="proj-tag">Data Validation</span>
-        </div>
-      </div>
-
-      <div class="project-card fade-up">
-        <div class="project-status ps-done"><span class="ps-dot"></span>Completed</div>
-        <div class="project-name">Student Management System</div>
-        <div class="project-desc">
-          Full-stack web application with complete CRUD operations for managing student records, built with Python Flask backend and MySQL database.
-        </div>
-        <div class="project-tech">
-          <span class="proj-tag">Python Flask</span>
-          <span class="proj-tag">MySQL</span>
-          <span class="proj-tag">HTML/CSS</span>
-          <span class="proj-tag">Bootstrap</span>
         </div>
       </div>
     </div>
@@ -1742,21 +1835,35 @@ function addLine(i){
 }
 setTimeout(()=>addLine(0), 600);
 
-// Hamburger Menu
+// Hamburger Menu - robust mobile open/close
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-});
-document.querySelectorAll('.mob-link').forEach(link=>{
-  link.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  hamburger.setAttribute('aria-expanded','false');
+}
+function openMobileMenu(){
+  hamburger.classList.add('open');
+  mobileNav.classList.add('open');
+  document.body.classList.add('menu-open');
+  hamburger.setAttribute('aria-expanded','true');
+}
+if (hamburger && mobileNav) {
+  hamburger.setAttribute('aria-expanded','false');
+  hamburger.addEventListener('click',(e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    mobileNav.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
   });
-});
+  document.querySelectorAll('.mob-link').forEach(link=>{
+    link.addEventListener('click', closeMobileMenu);
+  });
+  document.addEventListener('keydown',(e)=>{
+    if(e.key === 'Escape') closeMobileMenu();
+  });
+}
 
 // WhatsApp Widget
 var WA_NUMBER = '919952405003'; // +91 99524 05003
