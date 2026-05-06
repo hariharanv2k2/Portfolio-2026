@@ -1320,6 +1320,16 @@ nav { z-index: 4000; }
 .hamburger { z-index: 4100; }
 .mobile-nav-overlay { z-index: 3500; }
 
+
+
+/* Stable mobile hamburger override */
+@media(max-width:900px){
+  nav{z-index:100000 !important;}
+  #hamburger{display:flex !important; position:relative !important; z-index:100001 !important; pointer-events:auto !important; cursor:pointer !important;}
+  #mobileNav{z-index:99990 !important;}
+  #mobileNav.open{display:flex !important; pointer-events:auto !important;}
+}
+
 </style>
 </head>
 <body>
@@ -2019,11 +2029,16 @@ document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 </script>
 
 <script>
-// Final mobile menu safety check
+// Final mobile menu fix - removes duplicate old click listeners and makes toggle stable
 (function(){
-  const btn = document.getElementById('hamburger');
-  const menu = document.getElementById('mobileNav');
-  if (!btn || !menu) return;
+  var oldBtn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileNav');
+  if (!oldBtn || !menu) return;
+
+  // Clone the hamburger button to remove previously attached duplicate listeners.
+  var btn = oldBtn.cloneNode(true);
+  oldBtn.parentNode.replaceChild(btn, oldBtn);
+
   function setMenu(open){
     btn.classList.toggle('open', open);
     menu.classList.toggle('open', open);
@@ -2031,16 +2046,26 @@ document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   }
-  btn.onclick = function(e){
+
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('type', 'button');
+
+  btn.addEventListener('click', function(e){
     e.preventDefault();
     e.stopPropagation();
     setMenu(!menu.classList.contains('open'));
-  };
+  });
+
   menu.querySelectorAll('a').forEach(function(link){
     link.addEventListener('click', function(){ setMenu(false); });
   });
+
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') setMenu(false);
+  });
+
+  window.addEventListener('resize', function(){
+    if (window.innerWidth > 900) setMenu(false);
   });
 })();
 </script>
