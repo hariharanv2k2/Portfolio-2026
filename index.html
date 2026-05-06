@@ -1330,6 +1330,102 @@ nav { z-index: 4000; }
   #mobileNav.open{display:flex !important; pointer-events:auto !important;}
 }
 
+
+
+/* ── Final PDF Resume Embed Fix ───────────────── */
+.resume-subtitle {
+  margin-bottom: 0;
+}
+.resume-pdf-card {
+  margin-top: 34px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.32);
+}
+.resume-pdf-preview {
+  background: #0b1020;
+  padding: 14px;
+}
+.resume-pdf-preview iframe {
+  width: 100%;
+  height: min(76vh, 900px);
+  min-height: 620px;
+  border: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  display: block;
+}
+.resume-mobile-note {
+  display: none;
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+  background: rgba(255,255,255,0.025);
+}
+
+/* ── Final Experience Mobile Alignment Fix ───── */
+@media(max-width:900px){
+  .exp-bullets {
+    display: block;
+  }
+  .exp-bullets li {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    gap: 0;
+    text-align: left;
+  }
+  .exp-bullets li::before {
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    margin: 0;
+  }
+  .exp-bullets li strong,
+  .exp-bullets li .tag {
+    display: inline;
+    white-space: normal;
+  }
+  .resume-pdf-card {
+    margin-top: 24px;
+    border-radius: 14px;
+  }
+  .resume-pdf-preview {
+    padding: 10px;
+  }
+  .resume-pdf-preview iframe {
+    min-height: 560px;
+    height: 70vh;
+  }
+}
+
+@media(max-width:600px){
+  .resume-pdf-preview {
+    display: none;
+  }
+  .resume-mobile-note {
+    display: block;
+  }
+  .resume-pdf-card {
+    margin-top: 20px;
+  }
+  .rp-filename {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+
+
+/* Final visibility fallback: prevents blank sections on mobile browsers */
+.fade-up { opacity: 1 !important; transform: none !important; }
+
 </style>
 </head>
 <body>
@@ -1350,20 +1446,20 @@ nav { z-index: 4000; }
     <a href="#resume">Resume</a>
     <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Open or close menu">
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" onclick="this.classList.toggle('open');document.getElementById('mobileNav').classList.toggle('open');document.body.classList.toggle('menu-open');return false;">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile Nav Overlay -->
 <div class="mobile-nav-overlay" id="mobileNav">
-  <a href="#about" class="mob-link">About</a>
-  <a href="#journey" class="mob-link">Journey</a>
-  <a href="#skills" class="mob-link">Skills</a>
-  <a href="#experience" class="mob-link">Experience</a>
-  <a href="#projects" class="mob-link">Projects</a>
-  <a href="#resume" class="mob-link">Resume</a>
-  <a href="#contact" class="mob-link" style="color:var(--mint)">Hire Me</a>
+  <a href="#about" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">About</a>
+  <a href="#journey" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Journey</a>
+  <a href="#skills" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Skills</a>
+  <a href="#experience" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Experience</a>
+  <a href="#projects" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Projects</a>
+  <a href="#resume" class="mob-link" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Resume</a>
+  <a href="#contact" class="mob-link" style="color:var(--mint)" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');document.body.classList.remove('menu-open');">Hire Me</a>
 </div>
 
 <!-- ── HERO ──────────────────────────────── -->
@@ -1709,108 +1805,42 @@ nav { z-index: 4000; }
 <!-- ── RESUME ─────────────────────────────── -->
 <section id="resume">
   <div class="container">
-    <div class="section-tag fade-up">08 — Resume</div>
+    <div class="section-tag fade-up">08 - Resume</div>
     <h2 class="section-title fade-up">My <span>Resume</span></h2>
+    <p class="section-sub fade-up resume-subtitle">
+      View or download my latest aligned resume in PDF format.
+    </p>
 
-    <div class="resume-card fade-up">
-      <!-- Window chrome -->
+    <div class="resume-pdf-card fade-up">
       <div class="resume-card-header">
         <div class="rp-dot r"></div>
         <div class="rp-dot y"></div>
         <div class="rp-dot g"></div>
-        <span class="rp-filename">Hariharan_V_Resume.pdf</span>
+        <span class="rp-filename">Hariharan_V_Resume_Aligned.pdf</span>
       </div>
 
-      <!-- White resume body -->
-      <div class="resume-body">
+      <div class="resume-pdf-preview">
+        <iframe
+          src="Hariharan_V_Resume_Aligned.pdf#toolbar=1&navpanes=0&scrollbar=1"
+          title="Hariharan V Resume PDF Preview"
+          loading="lazy">
+        </iframe>
+      </div>
 
-        <!-- Header -->
-        <div class="rv-name">HARIHARAN V</div>
-        <div class="rv-role">QA Engineer</div>
-        <div class="rv-contact">
-          9952405003 &nbsp;&bull;&nbsp; hariharan.v2k2@gmail.com &nbsp;&bull;&nbsp; hariharan-qa-engineer.netlify.app<br>
-          02, Samayapurathal Nagar, Villangampadi, Chinanerkunam Post, Tindivanam Taluk, Villupuram District &ndash; 604302
-        </div>
-        <div class="rv-rule"></div>
+      <div class="resume-mobile-note">
+        PDF preview may not render inside some mobile browsers. Use View Resume or Download Resume below for the best experience.
+      </div>
+    </div>
 
-        <!-- Summary -->
-        <div class="rv-section-head">Professional Summary</div>
-        <p class="rv-body">QA Engineer with 1+ year of experience in manual testing, test automation, API testing, and performance testing. Proven ability to deliver client-critical solutions, including automation of 40,000+ ERP records using Python and pytest. Experienced in building scalable automation frameworks using Playwright and Cypress with Page Object Model (POM). Strong focus on improving testing efficiency, reducing defects, and ensuring high-quality product releases.</p>
-        <div class="rv-rule"></div>
-
-        <!-- Experience -->
-        <div class="rv-section-head">Work Experience</div>
-        <div class="rv-jobtitle">QA Engineer &mdash; Finstein, Chennai, Tamil Nadu</div>
-        <div class="rv-jobmeta">April 2025 – Present</div>
-        <ul class="rv-bullets">
-          <li>Built end-to-end automation frameworks using <strong>Playwright</strong> and <strong>Cypress</strong> with POM design; implemented self-healing test strategies to minimize flaky failures.</li>
-          <li>Performed <strong>API testing</strong> to validate request/response flows, status codes, and data integrity; conducted <strong>performance and load testing</strong> using Gatling to identify bottlenecks.</li>
-          <li>Tested <strong>ERPNext and Frappe</strong> workflows in a real client environment across Manufacturing, Buying, Sales, and Engineering modules.</li>
-          <li>Led ERP data validation project: automated verification of <strong>40,000+ records</strong> (Item Code, UOM, Rate, Currency) using Python and pytest, generating structured mismatch reports.</li>
-        </ul>
-        <div class="rv-rule"></div>
-
-        <!-- Projects -->
-        <div class="rv-section-head">Projects</div>
-        <div class="rv-projtitle">ERP Data Validation &amp; Module Testing – Manufacturing Domain</div>
-        <ul class="rv-bullets">
-          <li>Automated validation of 40,000+ ERP records using Python and pytest; generated structured mismatch reports independently under strict deadlines.</li>
-          <li>Tested Manufacturing, Buying, Sales, and Engineering modules: work orders, BOM, purchase orders, supplier management, item configurations, and routing.</li>
-        </ul>
-        <div class="rv-projtitle">MES (Manufacturing Execution System) – Testing &amp; Validation</div>
-        <ul class="rv-bullets">
-          <li>Performed functional and regression testing of MES workflows integrated with ERP; validated real-time production tracking and MES-ERP data sync for manufacturing orders and material consumption.</li>
-        </ul>
-        <div class="rv-projtitle">Image to Text Converter</div>
-        <ul class="rv-bullets">
-          <li>Developed a web tool to extract text from images using OCR and Flask.</li>
-        </ul>
-        <div class="rv-rule"></div>
-
-        <!-- Two-col: Skills | Education -->
-        <div class="rv-two-col">
-          <div>
-            <div class="rv-section-head">Technical Skills</div>
-            <div class="rv-skill-label">Automation Tools</div>
-            <div class="rv-skill-val">Playwright, Cypress</div>
-            <div class="rv-skill-label">Programming Languages</div>
-            <div class="rv-skill-val">Python, JavaScript, TypeScript</div>
-            <div class="rv-skill-label">Frameworks</div>
-            <div class="rv-skill-val">Page Object Model (POM), pytest</div>
-            <div class="rv-skill-label">Testing Types</div>
-            <div class="rv-skill-val">Manual, Automation, API, Performance, Regression, Smoke, E2E</div>
-            <div class="rv-skill-label">Tools &amp; Platforms</div>
-            <div class="rv-skill-val">Gatling, ERPNext, Frappe, MySQL</div>
-            <div class="rv-skill-label">Cloud &amp; OS</div>
-            <div class="rv-skill-val">AWS (Basics), Linux</div>
-            <div class="rv-skill-label">Concepts</div>
-            <div class="rv-skill-val">SDLC, STLC, Bug Life Cycle, BVA, Equivalence Partitioning, Agile/Scrum</div>
-          </div>
-          <div>
-            <div class="rv-section-head">Education</div>
-            <div class="rv-skill-label">Master of Computer Application (MCA)</div>
-            <div class="rv-skill-val">Takshashila University &nbsp;|&nbsp; 2023 – 2025 &nbsp;|&nbsp; CGPA: 8.7</div>
-            <div class="rv-skill-label">Bachelor of Computer Applications (BCA)</div>
-            <div class="rv-skill-val">Thiruvalluvar University &nbsp;|&nbsp; 2020 – 2023 &nbsp;|&nbsp; CGPA: 8.0</div>
-            <div class="rv-skill-label">Higher Secondary Certificate (HSC)</div>
-            <div class="rv-skill-val">ST. John's Matric Hr. Sec. School &nbsp;|&nbsp; 2020 &nbsp;|&nbsp; 57%</div>
-            <div class="rv-skill-label">Secondary School Leaving Certificate (SSLC)</div>
-            <div class="rv-skill-val">ST. John's Matric Hr. Sec. School &nbsp;|&nbsp; 2018 &nbsp;|&nbsp; 70%</div>
-
-            <div class="rv-section-head" style="margin-top:18px">Certifications</div>
-            <div class="rv-skill-val">Python for Beginners – Mastering the Essentials (Scalar Topics)</div>
-
-            <div class="rv-section-head" style="margin-top:18px">Languages</div>
-            <div class="rv-skill-val">Tamil (Native) &nbsp;|&nbsp; English (Professional Proficiency)</div>
-          </div>
-        </div>
-
-      </div><!-- /resume-body -->
-    </div><!-- /resume-card -->
-
-    <!-- Buttons -->
     <div class="resume-btns fade-up">
-      <a href="Hariharan_V_Resume.pdf" download="Hariharan_V_Resume.pdf" class="btn-download">
+      <a href="Hariharan_V_Resume_Aligned.pdf" target="_blank" rel="noopener" class="btn-view">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        View Resume
+      </a>
+      <a href="Hariharan_V_Resume_Aligned.pdf" download="Hariharan_V_Resume_Aligned.pdf" class="btn-download">
         <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -1818,15 +1848,7 @@ nav { z-index: 4000; }
         </svg>
         Download Resume
       </a>
-      <a href="Hariharan_V_Resume.pdf" target="_blank" class="btn-view">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-        View Online
-      </a>
     </div>
-
   </div>
 </section>
 
@@ -1958,36 +1980,6 @@ function addLine(i){
 }
 setTimeout(()=>addLine(0), 600);
 
-// Hamburger Menu - robust mobile open/close
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
-function closeMobileMenu(){
-  hamburger.classList.remove('open');
-  mobileNav.classList.remove('open');
-  document.body.classList.remove('menu-open');
-  hamburger.setAttribute('aria-expanded','false');
-}
-function openMobileMenu(){
-  hamburger.classList.add('open');
-  mobileNav.classList.add('open');
-  document.body.classList.add('menu-open');
-  hamburger.setAttribute('aria-expanded','true');
-}
-if (hamburger && mobileNav) {
-  hamburger.setAttribute('aria-expanded','false');
-  hamburger.addEventListener('click',(e)=>{
-    e.preventDefault();
-    e.stopPropagation();
-    mobileNav.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-  });
-  document.querySelectorAll('.mob-link').forEach(link=>{
-    link.addEventListener('click', closeMobileMenu);
-  });
-  document.addEventListener('keydown',(e)=>{
-    if(e.key === 'Escape') closeMobileMenu();
-  });
-}
-
 // WhatsApp Widget
 var WA_NUMBER = '919952405003'; // +91 99524 05003
 const waBtn = document.getElementById('wa-btn');
@@ -2028,45 +2020,44 @@ var obs = new IntersectionObserver(function(entries){
 document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 </script>
 
+
 <script>
-// Final mobile menu fix - removes duplicate old click listeners and makes toggle stable
+// Final stable mobile menu and visibility fallback
 (function(){
-  var oldBtn = document.getElementById('hamburger');
-  var menu = document.getElementById('mobileNav');
-  if (!oldBtn || !menu) return;
-
-  // Clone the hamburger button to remove previously attached duplicate listeners.
-  var btn = oldBtn.cloneNode(true);
-  oldBtn.parentNode.replaceChild(btn, oldBtn);
-
-  function setMenu(open){
-    btn.classList.toggle('open', open);
-    menu.classList.toggle('open', open);
-    document.body.classList.toggle('menu-open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  function initPortfolioFinalFixes(){
+    var btn = document.getElementById('hamburger');
+    var menu = document.getElementById('mobileNav');
+    if (btn && menu && !btn.dataset.boundFinalToggle) {
+      btn.dataset.boundFinalToggle = 'true';
+      function setMenu(open){
+        btn.classList.toggle('open', open);
+        menu.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        setMenu(!menu.classList.contains('open'));
+      });
+      menu.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){ setMenu(false); });
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') setMenu(false);
+      });
+      window.addEventListener('resize', function(){
+        if (window.innerWidth > 900) setMenu(false);
+      });
+    }
+    document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
   }
-
-  btn.setAttribute('aria-expanded', 'false');
-  btn.setAttribute('type', 'button');
-
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    setMenu(!menu.classList.contains('open'));
-  });
-
-  menu.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){ setMenu(false); });
-  });
-
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') setMenu(false);
-  });
-
-  window.addEventListener('resize', function(){
-    if (window.innerWidth > 900) setMenu(false);
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortfolioFinalFixes);
+  } else {
+    initPortfolioFinalFixes();
+  }
 })();
 </script>
 
