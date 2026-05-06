@@ -1207,6 +1207,119 @@ nav { z-index:3000; }
   .hero-name { font-size:38px; }
 }
 
+
+
+/* ── Experience Mobile Alignment Final Fix ──
+   Fixes broken inline text wrapping inside Experience bullet content on mobile. */
+.exp-bullets li {
+  display: block !important;
+  position: relative;
+  padding-left: 22px;
+  gap: 0 !important;
+  text-align: left;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.exp-bullets li::before {
+  position: absolute;
+  left: 0;
+  top: 0.12em;
+  margin-top: 0 !important;
+  line-height: inherit;
+}
+.exp-bullets li strong,
+.exp-bullets li .tag {
+  display: inline !important;
+  white-space: normal !important;
+  word-break: normal !important;
+}
+
+@media(max-width:900px){
+  #experience .container { padding-left: 16px; padding-right: 16px; }
+  #experience .exp-card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 22px;
+    padding: 22px 18px 24px;
+    overflow: visible;
+  }
+  #experience .exp-header {
+    display: block;
+    margin-bottom: 16px;
+  }
+  #experience .exp-company {
+    font-size: 20px;
+    line-height: 1.22;
+    margin-bottom: 5px;
+  }
+  #experience .exp-role {
+    display: block;
+    margin-bottom: 10px;
+  }
+  #experience .exp-duration {
+    align-items: flex-start;
+    width: 100%;
+    gap: 5px;
+  }
+  #experience .duration-badge {
+    display: inline-flex;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  #experience .location-tag {
+    text-align: left;
+    line-height: 1.45;
+  }
+  #experience .exp-bullets {
+    gap: 10px;
+  }
+  #experience .exp-bullets li {
+    font-size: 13.6px;
+    line-height: 1.66;
+    padding-left: 18px;
+  }
+}
+
+@media(max-width:480px){
+  #experience .container { padding-left: 12px; padding-right: 12px; }
+  #experience { padding-top: 48px !important; padding-bottom: 44px !important; }
+  #experience .exp-card {
+    margin-top: 18px;
+    padding: 18px 14px 20px;
+    border-radius: 14px;
+  }
+  #experience .exp-header { margin-bottom: 14px; }
+  #experience .exp-company { font-size: 18px; }
+  #experience .exp-role { font-size: 10.5px; letter-spacing: 1.2px; }
+  #experience .duration-badge { font-size: 10px; padding: 4px 10px; }
+  #experience .location-tag { font-size: 10.5px; }
+  #experience .exp-bullets { gap: 9px; }
+  #experience .exp-bullets li {
+    font-size: 13px;
+    line-height: 1.62;
+    padding-left: 17px;
+  }
+}
+
+@media(max-width:380px){
+  #experience .container { padding-left: 10px; padding-right: 10px; }
+  #experience .exp-card { padding: 16px 12px 18px; }
+  #experience .exp-bullets li {
+    font-size: 12.7px;
+    line-height: 1.58;
+    padding-left: 16px;
+  }
+}
+
+/* Mobile menu final safety: same toggle opens and closes every time */
+body.menu-open { overflow: hidden !important; }
+.mobile-nav-overlay { pointer-events: none; }
+.mobile-nav-overlay.open { pointer-events: auto; }
+nav { z-index: 4000; }
+.hamburger { z-index: 4100; }
+.mobile-nav-overlay { z-index: 3500; }
+
 </style>
 </head>
 <body>
@@ -1904,5 +2017,33 @@ var obs = new IntersectionObserver(function(entries){
 },{threshold:0.12});
 document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 </script>
+
+<script>
+// Final mobile menu safety check
+(function(){
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileNav');
+  if (!btn || !menu) return;
+  function setMenu(open){
+    btn.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.onclick = function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    setMenu(!menu.classList.contains('open'));
+  };
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') setMenu(false);
+  });
+})();
+</script>
+
 </body>
 </html>
