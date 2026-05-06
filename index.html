@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hariharan.V — QA Engineer</title>
+<meta name="description" content="QA Engineer specializing in Playwright, Cypress, Python automation and AI-driven testing."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+<div id="progress-bar"></div>
+
+<!-- ── NAVBAR ────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">H<span>.</span>V</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#journey">Journey</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </div>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNav" aria-hidden="true">
+  <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Close menu">×</button>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#journey" class="mob-link">Journey</a>
+  <a href="#skills" class="mob-link">Skills</a>
+  <a href="#experience" class="mob-link">Experience</a>
+  <a href="#projects" class="mob-link">Projects</a>
+  <a href="#resume" class="mob-link">Resume</a>
+  <a href="#contact" class="mob-link" style="color:var(--mint)">Hire Me</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────── -->
+<section id="hero">
+  <div class="dot-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for Opportunities
+        </div>
+        <h1 class="hero-name">
+          HARIHARAN<span class="accent">.</span>V
+        </h1>
+        <div class="hero-title-wrap">
+          <span class="title-prefix">// currently:</span>
+          <span class="title-typed" id="typed-title"></span>
+        </div>
+        <p class="hero-tagline">
+          <strong>Manual tester by instinct.</strong> Automation engineer by skill.
+          AI builder by curiosity — finding bugs before your users do.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>
+            Get In Touch
+          </a>
+          <a href="#experience" class="btn-outline">View My Work →</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="term-dot r"></span>
+            <span class="term-dot y"></span>
+            <span class="term-dot g"></span>
+            <span class="term-title">hariharan@qa-engine ~ test run</span>
+          </div>
+          <div class="terminal-body" id="term-body">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap fade-up">
+        <div class="about-photo-frame">
+          <img
+            src="assets/profile.jpg"
+            alt="Hariharan.V"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="photo-fallback" style="display:none">H.V</div>
+          <div class="photo-glow"></div>
+        </div>
+        <span class="corner-bracket cb-tl"></span>
+        <span class="corner-bracket cb-br"></span>
+      </div>
+
+      <div class="about-text">
+        <div class="section-tag fade-up">01 — About Me</div>
+        <h2 class="section-title fade-up">I test software so <span>users don't have to</span> deal with bugs.</h2>
+        <p class="about-bio fade-up">
+          I'm a <strong>QA Engineer at Finstein, Chennai</strong> with over a year of experience building test frameworks, catching real bugs, and delivering quality software to actual clients.
+        </p>
+        <p class="about-bio fade-up">
+          I started by writing test cases and reporting bugs. Then I got into automation with <span class="highlight">Playwright and Cypress</span>. Now I'm exploring how <span class="highlight">AI and MCP agents</span> can make the whole QA process faster and smarter.
+        </p>
+        <p class="about-bio fade-up">
+          One defining moment: a client handed me <strong>40,000 spreadsheet records</strong> and I had to validate all of them. No script existed. I built one from scratch using Python — and it worked under a live production deadline.
+        </p>
+        <div class="stats-row fade-up">
+          <div class="stat-chip">
+            <span class="num">1+</span>
+            <span class="lbl">Year Exp.</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num">40K+</span>
+            <span class="lbl">Records Validated</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num">3</span>
+            <span class="lbl">Auto Frameworks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOURNEY ───────────────────────────── -->
+<section id="journey">
+  <div class="container">
+    <div class="section-tag fade-up">02 — The Journey</div>
+    <h2 class="section-title fade-up">From clicks to <span>code</span> to <span style="color:var(--amber)">AI</span></h2>
+    <p class="section-sub fade-up">How I grew from manual testing to building AI-powered QA tools — one phase at a time.</p>
+
+    <div class="journey-grid">
+      <div class="phase-card fade-up">
+        <div class="phase-icon pi-1">🔍</div>
+        <div class="phase-label pl-1">Phase 01</div>
+        <h3 class="phase-title">Manual Tester</h3>
+        <p class="phase-desc">
+          Where it all started. Learning to think like a user, finding edge cases, writing structured test cases, and reporting bugs with clarity and context.
+        </p>
+        <div class="phase-tools">
+          <span class="phase-tool">Test Case Design</span>
+          <span class="phase-tool">Bug Reporting</span>
+          <span class="phase-tool">Regression Testing</span>
+          <span class="phase-tool">ERP Workflows</span>
+        </div>
+      </div>
+
+      <div class="phase-card active-phase fade-up">
+        <div class="phase-icon pi-2">⚡</div>
+        <div class="phase-label pl-2">Phase 02</div>
+        <h3 class="phase-title">Automation Engineer</h3>
+        <p class="phase-desc">
+          Built E2E automation frameworks, designed POM architecture, added self-healing tests, ran performance checks with Gatling, and validated 40K+ ERP records with Python.
+        </p>
+        <div class="phase-tools">
+          <span class="phase-tool">Playwright</span>
+          <span class="phase-tool">Cypress</span>
+          <span class="phase-tool">Python + pytest</span>
+          <span class="phase-tool">Gatling</span>
+          <span class="phase-tool">Codegen</span>
+          <span class="phase-tool">Self-Healing</span>
+        </div>
+      </div>
+
+      <div class="phase-card fade-up">
+        <div class="phase-icon pi-3">🤖</div>
+        <div class="phase-label pl-3">Phase 03 — Building</div>
+        <h3 class="phase-title">AI-Driven QA</h3>
+        <p class="phase-desc">
+          Currently exploring an AI-powered QA platform using AI agents and MCP — for smart test generation, live failure tracking, structured bug reports and root cause analysis.
+        </p>
+        <div class="phase-tools">
+          <span class="phase-tool">AI Agents</span>
+          <span class="phase-tool">MCP Protocol</span>
+          <span class="phase-tool">Test Generation</span>
+          <span class="phase-tool">Root Cause AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-tag fade-up">03 — Skills</div>
+    <h2 class="section-title fade-up">Tools I work <span>with</span></h2>
+
+    <div class="skills-categories">
+      <div class="skill-group fade-up">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-blue"><span class="sp-dot sd-blue"></span>JavaScript</span>
+          <span class="skill-pill sp-blue"><span class="sp-dot sd-blue"></span>TypeScript</span>
+          <span class="skill-pill sp-blue"><span class="sp-dot sd-blue"></span>Python</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <div class="skill-group-label">Automation & Frameworks</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>Playwright</span>
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>Cypress</span>
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>Codegen</span>
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>Self-Healing Tests</span>
+          <span class="skill-pill sp-purple"><span class="sp-dot sd-purple"></span>Page Object Model</span>
+          <span class="skill-pill sp-purple"><span class="sp-dot sd-purple"></span>pytest</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <div class="skill-group-label">Testing Types</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>Manual Testing</span>
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>E2E Testing</span>
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>API Testing</span>
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>Performance Testing</span>
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>Regression</span>
+          <span class="skill-pill sp-amber"><span class="sp-dot sd-amber"></span>Smoke Testing</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <div class="skill-group-label">Tools, Platforms & AI</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-rose"><span class="sp-dot sd-rose"></span>Gatling</span>
+          <span class="skill-pill sp-rose"><span class="sp-dot sd-rose"></span>ERPNext</span>
+          <span class="skill-pill sp-rose"><span class="sp-dot sd-rose"></span>Frappe</span>
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>AI Agents</span>
+          <span class="skill-pill sp-mint"><span class="sp-dot sd-mint"></span>MCP Protocol</span>
+          <span class="skill-pill sp-gray"><span class="sp-dot sd-gray"></span>MySQL</span>
+          <span class="skill-pill sp-gray"><span class="sp-dot sd-gray"></span>Linux</span>
+          <span class="skill-pill sp-gray"><span class="sp-dot sd-gray"></span>AWS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <div class="section-tag fade-up">04 — Experience</div>
+    <h2 class="section-title fade-up">Where I've been <span>building</span></h2>
+
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-meta">
+          <div class="exp-company">Finstein <span>—</span> Chennai</div>
+          <div class="exp-role">QA Engineer</div>
+        </div>
+        <div class="exp-duration">
+          <span class="duration-badge">April 2025 — Present</span>
+          <span class="location-tag">Tamil Nadu, India</span>
+        </div>
+      </div>
+
+      <ul class="exp-bullets">
+        <li>Designed and executed <strong>manual test cases</strong> covering functional, regression, and smoke testing across multiple product modules.</li>
+        <li>Built <strong>end-to-end automation frameworks</strong> using <span class="tag">Playwright</span> and <span class="tag">Cypress</span> following Page Object Model architecture.</li>
+        <li>Used <span class="tag">Codegen</span> for rapid test script generation and implemented <strong>self-healing test strategies</strong> to eliminate flaky failures.</li>
+        <li>Performed <strong>API testing</strong> to validate request/response flows, status codes, headers and data integrity across services.</li>
+        <li>Conducted <strong>performance and load testing</strong> using <span class="tag">Gatling</span> to identify bottlenecks and validate system behaviour under load.</li>
+        <li>Worked with <strong>ERPNext and Frappe</strong> workflows — tested modules end-to-end in a live enterprise environment.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ───────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-tag fade-up">05 — Projects</div>
+    <h2 class="section-title fade-up">Things I've <span>built</span></h2>
+
+    <div class="projects-grid">
+      <div class="project-card featured fade-up">
+        <div class="project-status ps-wip"><span class="ps-dot"></span>In Progress</div>
+        <div class="project-name">AI-Powered QA Support Platform</div>
+        <div class="project-desc">
+          Building a platform that helps QA teams analyze requirements, generate test cases, test applications live, track failures, create structured bug reports, and get AI-based root cause analysis — powered by AI agents and MCP.
+        </div>
+        <div class="project-tech">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">AI Agents</span>
+          <span class="proj-tag">MCP Protocol</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-status ps-done"><span class="ps-dot"></span>Completed</div>
+        <div class="project-name">ERP Data Validation Automation</div>
+        <div class="project-desc">
+          Automated validation of 40,000+ ERP records for Kaynes Technology. Built pytest scripts to catch field mismatches and auto-generate mismatch reports — all under a live production deadline.
+        </div>
+        <div class="project-tech">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">pytest</span>
+          <span class="proj-tag">ERPNext</span>
+          <span class="proj-tag">Data Validation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ──────────────────────────── -->
+<section id="education">
+  <div class="container">
+    <div class="section-tag fade-up">06 — Education</div>
+    <h2 class="section-title fade-up">Academic <span>background</span></h2>
+
+    <div class="edu-timeline fade-up">
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2023 — 2025</div>
+        <div class="edu-degree">Master of Computer Application (MCA)</div>
+        <div class="edu-inst">Takshashila University</div>
+        <span class="edu-grade">8.7 CGPA</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2020 — 2023</div>
+        <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-inst">Thiruvalluvar University</div>
+        <span class="edu-grade">8.0 CGPA</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2018 — 2020</div>
+        <div class="edu-degree">Higher Secondary (HSC)</div>
+        <div class="edu-inst">ST. John's Matric Hr. Sec. School, Chinnerkunam</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-year">2018</div>
+        <div class="edu-degree">Secondary School (SSLC)</div>
+        <div class="edu-inst">ST. John's Matric Hr. Sec. School, Chinnerkunam</div>
+        <span class="edu-grade">70%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS ─────────────────────── -->
+<section id="certs">
+  <div class="container">
+    <div class="section-tag fade-up">07 — Certifications</div>
+    <h2 class="section-title fade-up">Always <span>learning</span></h2>
+    <div class="certs-row fade-up">
+      <div class="cert-card">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name">Python for Beginners</div>
+          <div class="cert-by">Scalar Topics</div>
+          <div class="cert-desc">Mastering the essentials of Python programming with hands-on exercises and real projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESUME ─────────────────────────────── -->
+<section id="resume">
+  <div class="container">
+    <div class="section-tag fade-up">08 - Resume</div>
+    <h2 class="section-title fade-up">My <span>Resume</span></h2>
+    <p class="section-sub fade-up resume-subtitle">
+      View or download my latest aligned resume in PDF format.
+    </p>
+
+    <div class="resume-pdf-card fade-up">
+      <div class="resume-card-header">
+        <div class="rp-dot r"></div>
+        <div class="rp-dot y"></div>
+        <div class="rp-dot g"></div>
+        <span class="rp-filename">resume.pdf</span>
+      </div>
+
+      <div class="resume-image-preview">
+        <a href="assets/resume.pdf" target="_blank" rel="noopener" aria-label="Open Hariharan V Resume PDF">
+          <img
+            src="assets/resume-preview.png"
+            alt="Hariharan V Resume Preview"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+
+    <div class="resume-btns fade-up">
+      <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn-view">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        View Resume
+      </a>
+      <a href="assets/resume.pdf" download="resume.pdf" class="btn-download">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="section-tag fade-up" style="justify-content:center">09 — Contact</div>
+    <h2 class="contact-heading fade-up">LET'S <span>TALK</span></h2>
+    <p class="contact-sub fade-up">Open to QA Engineer, SDET, and Automation roles. Let's build something reliable together.</p>
+
+    <span class="contact-email-big fade-up">hariharan.v2k2@gmail.com</span>
+
+    <div class="contact-links fade-up">
+      <a href="mailto:hariharan.v2k2@gmail.com" class="contact-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>
+        Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/hariharan-vijayakumar2002/" target="_blank" class="contact-link">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://hariharanv2k2.github.io/my_portfolio/" target="_blank" class="contact-link">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHATSAPP WIDGET ──────────────────── -->
+<div id="wa-widget">
+  <div id="wa-chat-box">
+    <div class="wa-header">
+      <div class="wa-avatar">H</div>
+      <div class="wa-info">
+        <div class="wa-name">Hariharan.V</div>
+        <div class="wa-status"><span class="wa-online-dot"></span>Online — QA Engineer</div>
+      </div>
+      <button class="wa-close" id="wa-close-btn" aria-label="Close">×</button>
+    </div>
+    <div class="wa-body">
+      <div class="wa-bubble">
+        👋 Hey! I'm <strong>Hariharan</strong>, a QA Engineer.<br>
+        Got a project or opportunity? I'd love to hear from you!
+        <div class="wa-time">Just now</div>
+      </div>
+    </div>
+    <div class="wa-input-row">
+      <input id="wa-msg-input" type="text" placeholder="Type a message..." maxlength="200" />
+      <button id="wa-send-btn" aria-label="Send on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div style="position:relative">
+    <button id="wa-btn" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </button>
+    <div class="wa-notification" id="wa-notif">1</div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="footer-logo">H<span>.</span>V</div>
+  <div class="footer-copy">© 2026 Hariharan.V — QA Engineer</div>
+</footer>
+
+<!-- ── SCRIPTS ────────────────────────────── -->
+
+
+
+
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
