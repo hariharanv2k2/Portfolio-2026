@@ -227,7 +227,75 @@ section { position:relative; overflow:hidden; }
 .btn-outline:hover { border-color:var(--mint); color:var(--mint); }
 
 /* Terminal */
-.hero-right { display:flex; justify-content:center; align-items:center; }
+.hero-right { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:36px; }
+
+/* ── 3D ERPNext Module Cube ─────────────────── */
+.cube-scene {
+  width:160px; height:160px;
+  perspective:900px;
+  margin: 0 auto;
+}
+.cube {
+  width:100%; height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  animation: cube-spin 16s linear infinite;
+}
+@keyframes cube-spin {
+  from { transform: rotateX(-18deg) rotateY(0deg); }
+  to   { transform: rotateX(-18deg) rotateY(360deg); }
+}
+.cube-face {
+  position:absolute; width:160px; height:160px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:10px;
+  font-family:var(--font-h); font-weight:700; font-size:14px;
+  letter-spacing:.5px;
+  background: linear-gradient(145deg, rgba(0,229,181,0.10), rgba(74,144,226,0.08));
+  border:1px solid rgba(0,229,181,0.35);
+  color: var(--text);
+  border-radius:10px;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 24px rgba(0,229,181,0.08);
+}
+.cf-front  { transform: translateZ(80px); }
+.cf-back   { transform: rotateY(180deg) translateZ(80px); color:var(--amber); border-color:rgba(255,176,58,0.35); }
+.cf-right  { transform: rotateY(90deg) translateZ(80px); color:var(--rose); border-color:rgba(255,92,122,0.35); }
+.cf-left   { transform: rotateY(-90deg) translateZ(80px); color:var(--blue); border-color:rgba(74,144,226,0.35); }
+.cf-top    { transform: rotateX(90deg) translateZ(80px); }
+.cf-bottom { transform: rotateX(-90deg) translateZ(80px); color:var(--amber); border-color:rgba(255,176,58,0.35); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cube { animation: none; transform: rotateX(-18deg) rotateY(-25deg); }
+}
+@media (max-width: 900px) {
+  .cube-scene { width:120px; height:120px; }
+  .cube-face { width:120px; height:120px; font-size:12px; }
+  .cf-front, .cf-back, .cf-right, .cf-left, .cf-top, .cf-bottom { transform: translateZ(60px); }
+  .cf-back   { transform: rotateY(180deg) translateZ(60px); }
+  .cf-right  { transform: rotateY(90deg) translateZ(60px); }
+  .cf-left   { transform: rotateY(-90deg) translateZ(60px); }
+  .cf-top    { transform: rotateX(90deg) translateZ(60px); }
+  .cf-bottom { transform: rotateX(-90deg) translateZ(60px); }
+}
+
+/* ── 3D Tilt Cards (Experience / Projects / Journey) ── */
+.tilt {
+  transition: transform .15s ease-out, box-shadow .25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+}
+.tilt::after {
+  content:'';
+  position:absolute; inset:0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%), rgba(0,229,181,0.12), transparent 60%);
+  opacity:0; transition: opacity .25s ease;
+  pointer-events:none;
+}
+.tilt:hover::after { opacity:1; }
+.tilt:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.45); }
 .terminal {
   width:100%; max-width:460px;
   background:rgba(12,18,33,0.9);
