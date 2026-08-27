@@ -21,7 +21,7 @@ window.addEventListener('scroll',()=>{
 });
 
 // Typewriter
-const titles=['QA Engineer','Automation Tester','AI QA Builder','SDET'];
+const titles=['QA Engineer','Automation Tester','ERPNext/Frappe Developer','AI QA Builder','SDET'];
 let ti=0, ci=0, del=false;
 const el=document.getElementById('typed-title');
 function typewrite(){
@@ -91,6 +91,33 @@ function sendToWhatsApp(){
 
 waSendBtn.addEventListener('click', sendToWhatsApp);
 waMsgInput.addEventListener('keydown', function(e){ if(e.key==='Enter') sendToWhatsApp(); });
+
+// 3D Tilt Cards
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isCoarse = window.matchMedia('(pointer: coarse)').matches;
+  if (reduce || isCoarse) return;
+  document.querySelectorAll('.tilt').forEach(function(card){
+    var raf = null;
+    card.addEventListener('mousemove', function(e){
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width;
+        var py = (e.clientY - r.top) / r.height;
+        var rx = (py - 0.5) * -10;
+        var ry = (px - 0.5) * 10;
+        card.style.transform = 'perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-4px)';
+        card.style.setProperty('--glow-x', (px*100)+'%');
+        card.style.setProperty('--glow-y', (py*100)+'%');
+      });
+    });
+    card.addEventListener('mouseleave', function(){
+      if (raf) cancelAnimationFrame(raf);
+      card.style.transform = '';
+    });
+  });
+})();
 
 // Scroll Fade-in
 var obs = new IntersectionObserver(function(entries){
